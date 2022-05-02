@@ -14,8 +14,10 @@ public class ApiGatewayConfiguration {
     // return a route
     return builder.routes()
                   .route(p1 -> p1.path("/get")
-                                 .filters(f -> f.addRequestHeader("MyHeader", "MyURI")
-                                                .addRequestParameter("param", "myParam"))
+                                 .filters(f -> f.addRequestHeader("MyHeader",
+                                                                  "MyURI")
+                                                .addRequestParameter("param",
+                                                                     "myParam"))
                                  .uri("http://httpbin.org:80"))
                   // Here, the value of 'uri' is the 'Application' name registered under Eureka.
                   // Values of upper/lower cases are ignored.
@@ -24,6 +26,10 @@ public class ApiGatewayConfiguration {
                   .route(p -> p.path("/currency-conversion/**")
                                .uri("lb://currency-conversion"))
                   .route(p -> p.path("/currency-conversion-feign/**")
+                               .uri("lb://currency-conversion"))
+                  .route(p -> p.path("/currency-conversion-new/**")
+                               .filters(f -> f.rewritePath("/currency-conversion-new",
+                                                           "/currency-conversion-feign"))
                                .uri("lb://currency-conversion"))
                   .build();
   }
