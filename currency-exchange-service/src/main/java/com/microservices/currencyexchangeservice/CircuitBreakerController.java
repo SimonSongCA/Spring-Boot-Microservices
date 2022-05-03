@@ -21,7 +21,7 @@ public class CircuitBreakerController {
   //  method of the controller.
   //  @CircuitBreaker(name = "default", fallbackMethod = "hardcodedResponse")
   //  A rate limiter that limits how many requests are allowed within a period of time
-  @RateLimiter(name = "default-rate-limiter")
+//  @RateLimiter(name = "default-rate-limiter")
   // @Bulkhead: A rate limiter that limits the maximum number concurrent calls
   @Bulkhead(name = "bulkhead-rate-limiter")
   public String sampleApi() {
