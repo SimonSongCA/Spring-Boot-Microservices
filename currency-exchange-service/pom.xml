@@ -57,7 +57,7 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
-<!--        Implement a Circuit Breaker (Actuator still needed. Already imported at the top.)-->
+        <!--        Implement a Circuit Breaker (Actuator still needed. Already imported at the top.)-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
@@ -66,6 +66,25 @@
             <groupId>io.github.resilience4j</groupId>
             <artifactId>resilience4j-spring-boot2</artifactId>
         </dependency>
+        <!--        Enable Zipkin for Distributed Tracing Server-->
+        <!--        Run 'docker run -p 9411:9411 openzipkin/zipkin:2.23' at terminal-->
+        <!--        Visit http://localhost:9411/zipkin/ for details-->
+
+        <!--        Connect CurrencyExchangeService to Zipkin using Sleuth-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-sleuth-zipkin</artifactId>
+        </dependency>
+
+        <!--        Enable RabbitMQ-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.amqp</groupId>-->
+        <!--            <artifactId>spring-rabbit</artifactId>-->
+        <!--        </dependency>-->
 
     </dependencies>
     <dependencyManagement>
